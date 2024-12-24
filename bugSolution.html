@@ -1,0 +1,21 @@
+The problem was resolved by carefully examining the order of CSS imports and applying specificity rules to the CSS.  The original HTML likely had conflicting CSS rules that were overriding the Tailwind classes.  To address this, I added a more specific CSS rule (using a more relevant selector) to make sure the Tailwind class takes precedence, this solved the problem.
+
+Here is the updated HTML (bugSolution.html) that demonstrates the solution: 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tailwind CSS Bug</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Add a more specific rule to override any potential conflicts.  Note the use of a more relevant class selector such as a unique class */
+        .my-text-element {
+            color: red !important; /* Ensure this class will override conflicting styles. */
+        }
+    </style>
+</head>
+<body>
+    <p class="my-text-element text-red-500">This text should now be red.</p>
+</body>
+</html>
+```
